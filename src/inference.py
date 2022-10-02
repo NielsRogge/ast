@@ -14,9 +14,10 @@ test_input = torch.rand([10, input_tdim, 128])
 model = ASTModel(label_dim=label_dim, input_tdim=input_tdim, imagenet_pretrain=False, audioset_pretrain=False)
 
 # load pretrained weights
-state_dict = hf_hub_download(repo_id="nielsr/audio-spectogram-transformer-checkpoint",
+filepath = hf_hub_download(repo_id="nielsr/audio-spectogram-transformer-checkpoint",
                              filename="audioset_10_10_0.4593.pth",
                              repo_type="dataset")
+state_dict = torch.load(filepath, map_location="cpu")
 model.load_state_dict(state_dict)
 
 with torch.no_grad():

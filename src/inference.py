@@ -33,7 +33,7 @@ filepath = hf_hub_download(repo_id="nielsr/audio-spectogram-transformer-checkpoi
                            repo_type="dataset")
 
 feats = make_features(filepath, mel_bins=128) # shape(1024, 128)
-dummy_input = feats.expand(1, 1024, 128)                       
+dummy_input = feats.expand(1, 1024, 128)    
 
 # create an AST model
 model = ASTModel(label_dim=527, fstride=10, tstride=10, input_fdim=128, input_tdim=1024, imagenet_pretrain=False, audioset_pretrain=False, model_size='base384', verbose=False)

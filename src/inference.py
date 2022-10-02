@@ -9,7 +9,7 @@ label_dim = 527
 test_input = torch.rand([10, input_tdim, 128])
 
 # create an AST model
-model = ASTModel(label_dim=label_dim, input_tdim=input_tdim, imagenet_pretrain=True, audioset_pretrain=True)
+model = ASTModel(label_dim=label_dim, input_tdim=input_tdim, imagenet_pretrain=False, audioset_pretrain=False)
 
 # load pretrained weights
 state_dict = torch.hub.load_state_dict_from_url("https://huggingface.co/datasets/nielsr/audio-spectogram-transformer-checkpoint/blob/main/audioset_10_10_0.4593.pth")

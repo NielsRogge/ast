@@ -55,4 +55,4 @@ with torch.no_grad():
 
 # output should be in shape [10, 527], i.e., 10 samples, each with prediction of 527 classes.
 print("Shape of the logits:", output.shape)
-print("Predicted class:", output.argmax(-1)
+print("Predicted class:", output.argmax(-1))

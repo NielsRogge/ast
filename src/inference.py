@@ -18,6 +18,11 @@ filepath = hf_hub_download(repo_id="nielsr/audio-spectogram-transformer-checkpoi
                              filename="audioset_10_10_0.4593.pth",
                              repo_type="dataset")
 state_dict = torch.load(filepath, map_location="cpu")
+
+for key in list(state_dict.keys()):
+    new_key = key.replace("module.", "")
+    state_dict[new_key] = state_dict.pop(key)
+
 model.load_state_dict(state_dict)
 
 with torch.no_grad():

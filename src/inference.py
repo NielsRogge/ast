@@ -32,7 +32,7 @@ filepath = hf_hub_download(repo_id="nielsr/audio-spectogram-transformer-checkpoi
                            filename="sample_audio.flac",
                            repo_type="dataset")
 
-feats = make_features('/content/ast/sample_audios/sample_audio.flac', mel_bins=128) # shape(1024, 128)
+feats = make_features(filepath, mel_bins=128) # shape(1024, 128)
 dummy_input = feats.expand(1, 1024, 128)                       
 
 # create an AST model

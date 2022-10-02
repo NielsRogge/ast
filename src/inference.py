@@ -50,6 +50,8 @@ for key in list(state_dict.keys()):
 
 model.load_state_dict(state_dict)
 
+print("Shape of dummy input:", dummy_input.shape)
+
 with torch.no_grad():
     output = model(dummy_input)
 

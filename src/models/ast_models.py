@@ -182,6 +182,10 @@ class ASTModel(nn.Module):
         dist_token = self.v.dist_token.expand(B, -1, -1)
         x = torch.cat((cls_tokens, dist_token, x), dim=1)
         x = x + self.v.pos_embed
+
+        print("Shape of embeddings after the position embeddings:", x.shape)
+        print("Initial values of the embeddings after position embeddings:", x[0,:3,:3])
+
         x = self.v.pos_drop(x)
         for blk in self.v.blocks:
             x = blk(x)

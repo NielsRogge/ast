@@ -33,7 +33,7 @@ filepath = hf_hub_download(repo_id="nielsr/audio-spectogram-transformer-checkpoi
                            repo_type="dataset")
 
 feats = make_features(filepath, mel_bins=128) # shape(1024, 128)
-dummy_input = feats.expand(1, 1024, 128)    
+dummy_input = feats.expand(1, 1024, 128)  # (batch_size, time, freq)  
 
 # create an AST model
 model = ASTModel(label_dim=527, fstride=10, tstride=10, input_fdim=128, input_tdim=1024, imagenet_pretrain=False, audioset_pretrain=False, model_size='base384', verbose=False)
@@ -58,3 +58,4 @@ with torch.no_grad():
 # output should be in shape [10, 527], i.e., 10 samples, each with prediction of 527 classes.
 print("Shape of the logits:", output.shape)
 print("Predicted class:", output.argmax(-1))
+print("First values of logits:", output[0, :3])

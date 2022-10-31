@@ -197,7 +197,14 @@ class ASTModel(nn.Module):
         x = self.v.norm(x)
         x = (x[:, 0] + x[:, 1]) / 2
 
+        print("Shape of embeddings after normalization:", x.shape)
+        print("First values of embeddings after normalization:", x[0,:3])
+
         x = self.mlp_head(x)
+
+        print("Shape of embeddings after MLP head:", x.shape)
+        print("First values of embeddings after MLP head:", x[0,:3])
+
         return x
 
 if __name__ == '__main__':

@@ -184,8 +184,16 @@ class ASTModel(nn.Module):
         x = x + self.v.pos_embed
 
         x = self.v.pos_drop(x)
+
+        print("Shape of embeddings before Transformer:", x.shape)
+        print("First values of embeddings before Transformer:", x[0,:3,:3])
+
         for blk in self.v.blocks:
             x = blk(x)
+
+        print("Shape of embeddings after Transformer:", x.shape)
+        print("First values of embeddings after Transformer:", x[0,:3,:3])
+
         x = self.v.norm(x)
         x = (x[:, 0] + x[:, 1]) / 2
 

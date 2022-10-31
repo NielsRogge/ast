@@ -1,3 +1,4 @@
+from multiprocessing import dummy
 import os
 from huggingface_hub import hf_hub_download
 
@@ -48,7 +49,8 @@ for key in list(state_dict.keys()):
 
 model.load_state_dict(state_dict)
 
-print("Shape of dummy input:", dummy_input.shape)
+print("Shape of inputs:", dummy_input.shape)
+print("First values of inputs:", dummy_input[0,:3,:3])
 
 with torch.no_grad():
     output = model(dummy_input)

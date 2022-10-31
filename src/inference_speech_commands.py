@@ -27,7 +27,7 @@ def make_features(waveform, mel_bins, target_length=1024):
         fbank = fbank[0:target_length, :]
 
     fbank = (fbank - (-6.845978)) / (5.5654526 * 2)
-    return fbank
+    return fbank.float()
 
 # create dummy audio
 dataset = load_dataset("speech_commands", "v0.02", split="validation")

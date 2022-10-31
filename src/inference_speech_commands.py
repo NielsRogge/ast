@@ -10,7 +10,7 @@ from models import ASTModel
 
 
 def make_features(waveform, mel_bins, target_length=1024):
-    waveform = torch.from_numpy(waveform)
+    waveform = torch.from_numpy(waveform).unsqueeze(0)
 
     fbank = torchaudio.compliance.kaldi.fbank(
         waveform, htk_compat=True, sample_frequency=16000, use_energy=False,
